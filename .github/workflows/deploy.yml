@@ -1,40 +1,47 @@
-name: Deploy Portfolio to AWS
+name: Deploy to S3 & CloudFront
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
+    
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
+      - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::229502947368:role/github-portfolio-deploy-role
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsRole
           aws-region: us-east-1
 
-      - name: Deploy static site to S3
+      - name: Sync Website Assets to S3
         run: |
           aws s3 sync . s3://brianmlasky-portfolio-dev \
             --delete \
             --exclude ".git/*" \
             --exclude ".github/*" \
             --exclude ".terraform/*" \
-            --exclude "*.tf" \
+            --exclude "*.tfstate*" \
             --exclude "*.tfvars" \
-            --exclude "*.hcl" \
+            --exclude "*.tf" \
+            --exclude ".terraform.lock.hcl" \
             --exclude ".gitignore" \
             --exclude "README.md"
 
-      - name: Invalidate CloudFront cache
+      - name: Invalidate CloudFront Cache
         run: |
           aws cloudfront create-invalidation \
             --distribution-id E2H3FTK4KRZNQE \
             --paths "/*"
+
+      - name: Deployment Status
+        run: |
+          echo "✅ Website deployed to https://d2dzak3y5t0it9.cloudfront.net"
