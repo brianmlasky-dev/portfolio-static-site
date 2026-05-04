@@ -39,11 +39,11 @@ jobs:
       - name: Invalidate CloudFront Cache
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id d2dzak3y5t0it9 \
+            --distribution-id E2H3FTK4KRZNQE \
             --paths "/*"
 
       - name: Deployment Status
         run: |
           echo "✅ Website deployed to https://brian-lasky.com"
-          echo "📊 Distribution: d2dzak3y5t0it9"
+          echo "📊 Distribution: E2H3FTK4KRZNQE"
           echo "🔄 Cache invalidation complete"
