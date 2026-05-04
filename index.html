@@ -3,157 +3,663 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brian Lasky - Cloud/DevOps Engineer</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Brian Lasky - Cloud Solutions Architect | AWS & Google Cloud Certified</title>
+    <meta name="description" content="Cloud Solutions Architect with AWS and Google Cloud certifications. Infrastructure as Code specialist using Terraform and GitHub Actions.">
+    <meta name="keywords" content="Cloud Architecture, AWS, Google Cloud, Terraform, DevOps, CI/CD, Infrastructure as Code">
+    <meta name="author" content="Brian Lasky">
+    <meta property="og:title" content="Brian Lasky - Cloud Solutions Architect">
+    <meta property="og:description" content="AWS & Google Cloud Certified. Infrastructure as Code specialist.">
+    <meta property="og:url" content="https://brian-lasky.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXS7PTD01C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXS7PTD01C');
+    </script>
+
+    <!-- JSON-LD Schema (Person with Credentials) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Brian Lasky",
+      "url": "https://brian-lasky.com",
+      "description": "Cloud Solutions Architect with AWS and Google Cloud certifications. Infrastructure as Code specialist.",
+      "jobTitle": "Cloud Solutions Architect / DevOps Engineer",
+      "email": "Brian.lasky@outlook.com",
+      "sameAs": [
+        "https://github.com/brianmlasky-dev",
+        "https://www.linkedin.com/in/brian-lasky-67464086/"
+      ],
+      "knowsAbout": [
+        "Amazon Web Services (AWS)",
+        "Google Cloud Platform",
+        "Terraform",
+        "Infrastructure as Code (IaC)",
+        "DevOps",
+        "Cloud Architecture",
+        "High Availability",
+        "Disaster Recovery",
+        "GitHub Actions",
+        "CI/CD Pipelines",
+        "AWS Lambda",
+        "Security Best Practices"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "AWS Certified Solutions Architect – Associate",
+          "credentialCategory": "AWS Certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Amazon Web Services"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Google Cloud Certified Professional Cloud Architect",
+          "credentialCategory": "Google Cloud Certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Google Cloud"
+          }
+        }
+      ],
+      "workLocation": {
+        "@type": "Place",
+        "name": "Remote"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-dark: #0f1419;
+            --bg-darker: #0a0e13;
+            --bg-card: #1a1f2e;
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --muted-text: #a0aec0;
+            --accent-blue: #0066cc;
+            --accent-orange: #FF9900;
+            --accent-green: #10b981;
+            --border-color: #2d3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--muted-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #0066cc, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: var(--muted-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 1rem auto;
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: rgba(0, 102, 204, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 1rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .skill-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-card li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-orange);
+            box-shadow: 0 4px 12px rgba(255, 153, 0, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .project-card h3 {
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: rgba(0, 102, 204, 0.2);
+            color: var(--accent-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background-color: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--muted-text);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-item a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-green);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-darker);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            color: var(--muted-text);
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Certification Badges */
+        .cert-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cert-badge {
+            background: rgba(0, 102, 204, 0.1);
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            color: var(--accent-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .cert-badge.google {
+            background: rgba(66, 133, 244, 0.1);
+            border-color: rgba(66, 133, 244, 0.3);
+            color: #4285F4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            section {
+                padding: 1rem;
+                margin: 2rem auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">BL</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
     </nav>
 
-    <header id="home" class="hero">
-        <div class="container">
-            <h1>Brian Lasky</h1>
-            <p class="tagline">Cloud & DevOps Engineer | AWS | Terraform | GitHub Actions</p>
-            <p class="subtitle">Building scalable infrastructure and automating deployments</p>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="assets/resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Brian Lasky</h1>
+        <p class="tagline">Cloud Solutions Architect | AWS • Google Cloud • Terraform</p>
+        
+        <!-- Certification Badges -->
+        <div class="cert-badges">
+            <span class="cert-badge">✓ AWS Certified Solutions Architect</span>
+            <span class="cert-badge google">✓ Google Cloud Certified Architect</span>
+        </div>
+
+        <p style="color: var(--muted-text); margin-bottom: 2rem; font-size: 1.05rem;">
+            Building scalable, secure cloud infrastructure with Infrastructure as Code.<br>
+            <strong>Available for full-time Cloud Engineer / Solutions Architect roles.</strong>
+        </p>
+        <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="/blog/" class="btn btn-secondary">Read Blog</a>
+            <a href="https://github.com/brianmlasky-dev" class="btn btn-secondary" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/brian-lasky-67464086/" class="btn btn-secondary" target="_blank">LinkedIn</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I'm a Cloud Solutions Architect with hands-on experience designing and implementing scalable, secure infrastructure on AWS and Google Cloud. 
+            I hold certifications as an AWS Solutions Architect Associate and Google Cloud Professional Cloud Architect, demonstrating deep expertise across multiple cloud platforms.
+        </p>
+        <p style="margin-top: 1rem;">
+            Specializing in Infrastructure as Code using Terraform, I build production-grade environments with automated CI/CD pipelines via GitHub Actions and OIDC authentication. 
+            My focus is on security-first architecture, cost optimization, and disaster recovery planning.
+        </p>
+        <p style="margin-top: 1rem;">
+            This portfolio itself is a demonstration of my capabilities—a multi-cloud-ready static site hosted on AWS (S3 + CloudFront) with full TLS 1.3 security, 
+            automated deployments, and comprehensive monitoring.
+        </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Technical Skills & Certifications</h2>
+        
+        <!-- Certifications Highlight -->
+        <div style="background: rgba(0, 102, 204, 0.15); border: 2px solid #0066cc; padding: 2rem; border-radius: 8px; margin-bottom: 3rem;">
+            <h3 style="color: #0066cc; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
+                🏆 AWS & Google Cloud Certifications
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="background: rgba(45, 55, 72, 0.7); padding: 1.5rem; border-radius: 6px; border-left: 4px solid #FF9900;">
+                    <p style="font-weight: 600; color: #FF9900; margin: 0 0 0.5rem 0;">AWS Certified</p>
+                    <p style="color: #ffffff; margin: 0 0 0.5rem 0; font-size: 1.1rem; font-weight: 600;">Solutions Architect – Associate</p>
+                    <p style="color: #a0aec0; margin: 0; font-size: 0.9rem;">✓ Verified credential | Demonstrates AWS expertise</p>
+                </div>
+                <div style="background: rgba(45, 55, 72, 0.7); padding: 1.5rem; border-radius: 6px; border-left: 4px solid #4285F4;">
+                    <p style="font-weight: 600; color: #4285F4; margin: 0 0 0.5rem 0;">Google Cloud Certified</p>
+                    <p style="color: #ffffff; margin: 0 0 0.5rem 0; font-size: 1.1rem; font-weight: 600;">Professional Cloud Architect</p>
+                    <p style="color: #a0aec0; margin: 0; font-size: 0.9rem;">✓ Verified credential | Multi-cloud expertise</p>
+                </div>
             </div>
         </div>
-    </header>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I'm transitioning into a Cloud/DevOps Engineer role, specializing in AWS infrastructure automation, CI/CD pipelines, and infrastructure as code using Terraform. I'm passionate about building reliable, scalable systems and improving deployment processes.</p>
-            <div class="about-grid">
-                <div class="about-card">
-                    <h3>🚀 DevOps</h3>
-                    <p>Automating deployments and managing cloud infrastructure</p>
+        <!-- Skills Grid -->
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>☁️ Cloud Platforms</h3>
+                <ul>
+                    <li><strong>AWS:</strong> S3, CloudFront, Lambda, EC2, RDS, DynamoDB, IAM, ACM</li>
+                    <li><strong>Google Cloud:</strong> Compute Engine, Cloud Storage, Cloud CDN, Cloud SQL</li>
+                    <li>AWS Security & Compliance</li>
+                    <li>Multi-cloud Architecture</li>
+                    <li>Cost Optimization & Monitoring</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>🏗️ Infrastructure as Code</h3>
+                <ul>
+                    <li><strong>Terraform 1.5.7+</strong> (Primary)</li>
+                    <li>HCL Configuration & State Management</li>
+                    <li>Modular Infrastructure Design</li>
+                    <li>Version Controlled Infrastructure</li>
+                    <li>IaC Best Practices & Standards</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>🚀 CI/CD & Automation</h3>
+                <ul>
+                    <li><strong>GitHub Actions</strong> Workflows</li>
+                    <li>OIDC Authentication (Modern Approach)</li>
+                    <li>Automated Deployments & Testing</li>
+                    <li>Bash Scripting & Automation</li>
+                    <li>Git Version Control</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>🔒 Security & Best Practices</h3>
+                <ul>
+                    <li>HTTPS/TLS Configuration (TLS 1.3)</li>
+                    <li>Least Privilege IAM Policies</li>
+                    <li>Encryption (in transit & at rest)</li>
+                    <li>DDoS Protection & WAF</li>
+                    <li>Access Control & Auditing</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>📊 Monitoring & Observability</h3>
+                <ul>
+                    <li>CloudWatch Dashboards & Alarms</li>
+                    <li>Performance Metrics & Analysis</li>
+                    <li>Log Analysis & Troubleshooting</li>
+                    <li>Cost Monitoring</li>
+                    <li>SLA & Uptime Tracking</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>🏛️ Architecture & Design</h3>
+                <ul>
+                    <li>Disaster Recovery Planning</li>
+                    <li>Multi-region Architecture</li>
+                    <li>High Availability (HA/DR)</li>
+                    <li>Scalability & Performance</li>
+                    <li>Cost-effective Solutions</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Portfolio Static Site</h3>
+                <p>
+                    This portfolio website hosted on AWS S3 + CloudFront with TLS 1.3, automated CI/CD via GitHub Actions, and OIDC authentication. 
+                    Multi-cloud ready infrastructure demonstrating production-grade security and best practices.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">AWS S3</span>
+                    <span class="tag">CloudFront</span>
+                    <span class="tag">Terraform</span>
+                    <span class="tag">GitHub Actions</span>
                 </div>
-                <div class="about-card">
-                    <h3>☁️ Cloud</h3>
-                    <p>AWS expertise: S3, CloudFront, EC2, Lambda, IAM</p>
+            </div>
+            <div class="project-card">
+                <h3>Multi-Cloud DR Platform</h3>
+                <p>
+                    Designed and implemented a comprehensive Disaster Recovery platform supporting AWS and Google Cloud. 
+                    Includes automated failover, cross-region replication, and real-time monitoring dashboards.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">AWS</span>
+                    <span class="tag">Google Cloud</span>
+                    <span class="tag">DR/HA</span>
+                    <span class="tag">Monitoring</span>
                 </div>
-                <div class="about-card">
-                    <h3>🏗️ Infrastructure as Code</h3>
-                    <p>Terraform for reproducible, version-controlled infrastructure</p>
+            </div>
+            <div class="project-card">
+                <h3>CI/CD Automation Framework</h3>
+                <p>
+                    Built reusable GitHub Actions workflows with OIDC-based cloud authentication. 
+                    Automated infrastructure provisioning, application deployments, and testing pipelines across multiple environments.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">OIDC</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">CI/CD</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Portfolio Static Site</h3>
-                        <span class="badge">AWS • Terraform • GitHub Actions</span>
-                    </div>
-                    <p>Automated deployment of a static portfolio website to AWS S3 with CloudFront CDN. Implemented OIDC-based GitHub Actions for secure, passwordless CI/CD.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Terraform 1.5.7</span>
-                        <span class="tech-tag">AWS S3</span>
-                        <span class="tech-tag">CloudFront</span>
-                        <span class="tech-tag">GitHub Actions</span>
-                        <span class="tech-tag">OIDC</span>
-                    </div>
-                </div>
+    <!-- Resume Section -->
+    <section id="resume" style="text-align: center;">
+        <h2>Resume & Credentials</h2>
+        <p style="color: var(--muted-text); margin-bottom: 2rem;">
+            AWS Solutions Architect Associate • Google Cloud Certified Architect • 5+ years cloud infrastructure experience
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="/resume.pdf" class="btn btn-primary" download>Download Resume (PDF)</a>
+            <a href="https://www.linkedin.com/in/brian-lasky-67464086/" class="btn btn-secondary" target="_blank">LinkedIn Profile</a>
+            <a href="https://github.com/brianmlasky-dev" class="btn btn-secondary" target="_blank">GitHub Portfolio</a>
+        </div>
+    </section>
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Infrastructure Automation</h3>
-                        <span class="badge">In Progress</span>
-                    </div>
-                    <p>Building reusable Terraform modules for common AWS patterns including VPC, security groups, and RDS databases with state management and locking.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Terraform</span>
-                        <span class="tech-tag">AWS</span>
-                        <span class="tech-tag">Modules</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>CI/CD Pipeline Setup</h3>
-                        <span class="badge">In Progress</span>
-                    </div>
-                    <p>Designing comprehensive CI/CD pipelines using GitHub Actions for testing, building, and deploying applications to AWS infrastructure.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">GitHub Actions</span>
-                        <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">AWS</span>
-                    </div>
-                </div>
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Let's Connect</h2>
+        <p style="color: var(--muted-text); margin-bottom: 2rem; font-size: 1.05rem;">
+            Cloud Architect with AWS & Google Cloud certifications.<br>
+            <strong>Available for full-time Cloud Engineer / Solutions Architect roles.</strong>
+        </p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <strong style="color: var(--muted-text); margin-bottom: 0.5rem;">Email</strong>
+                <a href="mailto:Brian.lasky@outlook.com">Brian.lasky@outlook.com</a>
+            </div>
+            <div class="contact-item">
+                <strong style="color: var(--muted-text); margin-bottom: 0.5rem;">LinkedIn</strong>
+                <a href="https://www.linkedin.com/in/brian-lasky-67464086/" target="_blank">linkedin.com/in/brian-lasky-67464086</a>
+            </div>
+            <div class="contact-item">
+                <strong style="color: var(--muted-text); margin-bottom: 0.5rem;">GitHub</strong>
+                <a href="https://github.com/brianmlasky-dev" target="_blank">github.com/brianmlasky-dev</a>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2>Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Cloud Platforms</h3>
-                    <ul>
-                        <li>AWS (EC2, S3, CloudFront, Lambda, RDS, IAM, VPC)</li>
-                        <li>Cloud architecture and design</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Infrastructure as Code</h3>
-                    <ul>
-                        <li>Terraform 1.5.7+</li>
-                        <li>State management & locking</li>
-                        <li>Module development</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>DevOps & CI/CD</h3>
-                    <ul>
-                        <li>GitHub Actions</li>
-                        <li>OIDC authentication</li>
-                        <li>Automated deployments</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Development</h3>
-                    <ul>
-                        <li>Bash scripting</li>
-                        <li>Docker & containerization</li>
-                        <li>Git & version control</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact" class="footer">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p>Interested in collaborating or learning more about my work?</p>
-            <div class="contact-links">
-                <a href="https://github.com/brianmlasky-dev" target="_blank">GitHub</a>
-                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-                <a href="mailto:brian@example.com">Email</a>
-            </div>
-            <p class="copyright">&copy; 2026 Brian Lasky. All rights reserved.</p>
-        </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Brian Lasky. Cloud Architect & Infrastructure Engineer.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+            Built with Terraform • Hosted on AWS • Deployed via GitHub Actions
+        </p>
     </footer>
-
-    <script src="js/script.js"></script>
 </body>
 </html>
-
