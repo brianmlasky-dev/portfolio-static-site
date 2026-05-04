@@ -8,18 +8,18 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Configure AWS Credentials
+      - name: Configure AWS Credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsRole
+          role-to-assume: arn:aws:iam::229502947368:role/GitHubActionsRole
           aws-region: us-east-1
 
       - name: Sync Website Assets to S3
@@ -39,9 +39,11 @@ jobs:
       - name: Invalidate CloudFront Cache
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id E2H3FTK4KRZNQE \
+            --distribution-id d2dzak3y5t0it9 \
             --paths "/*"
 
       - name: Deployment Status
         run: |
-          echo "✅ Website deployed to https://d2dzak3y5t0it9.cloudfront.net"
+          echo "✅ Website deployed to https://brian-lasky.com"
+          echo "📊 Distribution: d2dzak3y5t0it9"
+          echo "🔄 Cache invalidation complete"
